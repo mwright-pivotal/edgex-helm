@@ -59,12 +59,10 @@ spec:
       {{- if (eq .Values.edgex.features.messagebusbackend "mqtt") }}
         - name: MQTTBROKERINFO_HOST
           value: {{.Values.edgex.app.mqttbroker}}
-      {{- if .Values.edgex.security.enabled }}
         - name: MQTTBROKERINFO_AUTHMODE
           value: usernamepassword
         - name: MQTTBROKERINFO_CREDENTIALSNAME
           value: message-bus
-      {{- end}}
       {{- end }}
 
 
