@@ -56,14 +56,14 @@ spec:
         env:
         - name: SERVICE_HOST
           value: {{.Values.edgex.app.device.mqtt}}
-      {{- if .Values.edgex.security.enabled }}
       {{- if (eq .Values.edgex.features.messagebusbackend "mqtt") }}
+        - name: MQTTBROKERINFO_HOST
+          value: {{.Values.edgex.app.mqttbroker}}
+      {{- if .Values.edgex.security.enabled }}
         - name: MQTTBROKERINFO_AUTHMODE
           value: usernamepassword
         - name: MQTTBROKERINFO_CREDENTIALSNAME
           value: message-bus
-        - name: MQTTBROKERINFO_HOST
-          value: {{.Values.edgex.app.mqttbroker}}
       {{- end}}
       {{- end }}
 
